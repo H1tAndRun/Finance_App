@@ -7,7 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface BalanceRepository extends JpaRepository<Balance,Integer> {
+public interface OperationRepository extends JpaRepository<Operation, Integer> {
 
-    Optional<Balance> getBalanceByNumberBalance(String number);
+    Optional<List<Operation>> getOperationByBalance(Balance balance);
+    Optional<List<Operation>> getOperationByBalance_NumberBalance(String number);
 }

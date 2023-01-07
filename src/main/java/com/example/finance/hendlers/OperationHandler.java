@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-public class BalanceHandler {
+public class OperationHandler {
 
     @ExceptionHandler(NoSuchBalanceException.class)
-    public ResponseEntity handle(NoSuchBalanceException exception) {
+    public ResponseEntity handle(NoOperationBalanceException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }
