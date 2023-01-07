@@ -1,38 +1,37 @@
 package com.example.finance.entities;
 
 import lombok.*;
-import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
-@Data
 @NoArgsConstructor
 @RequiredArgsConstructor
 @ToString(exclude = "balance")
-@EqualsAndHashCode(exclude = "balance" )
-public class Income {
-
+@EqualsAndHashCode(exclude = "balance")
+@Data
+public class Operation {
     @Id
-    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Integer id;
 
     @Column(nullable = false)
     @NonNull
-    private String nameIncome;
+    private String nameOperation;
 
     @Column(nullable = false)
     @NonNull
-    private BigDecimal sumIncome;
+    private BigDecimal sum;
 
     @Column(nullable = false)
-    private LocalDate dateIncome=LocalDate.now();  //подрихтовать
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @ManyToOne
-    @JoinColumn(nullable = false,name = "balance_id")
+    @JoinColumn(name = "balance_id",nullable = false)
     @NonNull
     private Balance balance;
 }

@@ -10,8 +10,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
-@ToString(exclude = {"incomes","spendings"})
-@EqualsAndHashCode(exclude ={"incomes","spendings"} )
+@ToString(exclude = "operations")
+@EqualsAndHashCode(exclude = "operations")
 public class Balance {
     @Id
     @Column
@@ -27,8 +27,5 @@ public class Balance {
     private BigDecimal money;
 
     @OneToMany(mappedBy = "balance")
-    private List<Income> incomes;
-
-    @OneToMany(mappedBy = "balance")
-    private List<Spending> spendings;
+    private List<Operation> operations;
 }

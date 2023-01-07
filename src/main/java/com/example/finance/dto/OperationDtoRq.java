@@ -4,13 +4,12 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
-
 @Data
-public class SpendingDtoRq {
+public class OperationDtoRq {
 
-    private String nameSpending;
+    private String nameOperation;
 
-    private BigDecimal sumSpending;
+    private BigDecimal sumOperation;
 
     private String nameBalance;
 }
