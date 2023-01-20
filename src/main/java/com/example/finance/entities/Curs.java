@@ -3,7 +3,6 @@ package com.example.finance.entities;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 import java.time.LocalDate;

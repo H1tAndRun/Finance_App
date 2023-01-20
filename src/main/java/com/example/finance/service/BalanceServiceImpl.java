@@ -5,7 +5,6 @@ import com.example.finance.hendlers.NoSuchBalanceException;
 import com.example.finance.repository.BalanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 
 
