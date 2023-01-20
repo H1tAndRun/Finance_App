@@ -9,6 +9,5 @@ import java.util.Optional;
 
 public interface OperationRepository extends JpaRepository<Operation, Integer> {
 
-    Optional<List<Operation>> getOperationByBalance(Balance balance);
     Optional<List<Operation>> getOperationByBalance_NumberBalance(String number);
 }

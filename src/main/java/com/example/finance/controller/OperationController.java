@@ -21,8 +21,11 @@ public class OperationController {
     public ResponseEntity getOperationByNumberBalance(@PathVariable String number) {
         return new ResponseEntity(operationService.getOperationByNumberBalance(number), HttpStatus.OK);
     }
+
     @PostMapping("/operation")
     public ResponseEntity addOperationByBalance(@RequestBody OperationDtoRq operationDtoRq) {
-        return new ResponseEntity<>(operationService.addOperationByBalance(operationDtoRq), HttpStatus.OK);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(operationService.addOperationByBalance(operationDtoRq));
     }
 }
