@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class OperationDtoRs {
+public class OperationAddDtoRs {
 
     private String nameOperation;
 

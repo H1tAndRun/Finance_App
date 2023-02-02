@@ -1,4 +1,4 @@
-package com.example.finance.hendlers;
+package com.example.finance.handlers;
 
 public class NoOperationBalanceException extends RuntimeException{
 

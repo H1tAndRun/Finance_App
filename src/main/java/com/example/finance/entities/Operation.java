@@ -6,11 +6,13 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@NoArgsConstructor
 @RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString(exclude = "balance")
 @EqualsAndHashCode(exclude = "balance")
 @Data
+@Builder
 public class Operation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

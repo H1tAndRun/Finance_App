@@ -1,14 +1,16 @@
 package com.example.finance.dto;
 
+import lombok.Builder;
 import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class OperationDtoRq {
+@Builder
+public class OperationAddDtoRq {
 
     private String nameOperation;
 
     private BigDecimal sumOperation;
 
-    private String nameBalance;
+    private String numberBalance;
 }

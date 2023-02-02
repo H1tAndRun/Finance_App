@@ -1,9 +1,9 @@
 package com.example.finance.mapper;
 
-import com.example.finance.dto.OperationDtoRq;
-import com.example.finance.dto.OperationDtoRs;
+import com.example.finance.dto.OperationAddDtoRq;
+import com.example.finance.dto.OperationAddDtoRs;
 import com.example.finance.entities.Operation;
-import com.example.finance.hendlers.NoSuchBalanceException;
+import com.example.finance.handlers.NoSuchBalanceException;
 import com.example.finance.repository.BalanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,15 +18,15 @@ public class OperationMapper {
         this.balanceRepository = balanceRepository;
     }
 
-    public Operation castFromDtoRq(OperationDtoRq operationDtoRq) {
-        return new Operation(operationDtoRq.getNameOperation(),
-                operationDtoRq.getSumOperation(),
-                balanceRepository.getBalanceByNumberBalance(operationDtoRq.getNameBalance())
+    public Operation castFromDtoRq(OperationAddDtoRq operationAddDtoRq) {
+        return new Operation(operationAddDtoRq.getNameOperation(),
+                operationAddDtoRq.getSumOperation(),
+                balanceRepository.getBalanceByNumberBalance(operationAddDtoRq.getNumberBalance())
                         .orElseThrow(() -> new NoSuchBalanceException("Нет такого баланса")));
     }
 
-    public OperationDtoRs castFromEntity(Operation operation) {
-        return OperationDtoRs.builder()
+    public OperationAddDtoRs castFromEntity(Operation operation) {
+        return OperationAddDtoRs.builder()
                 .nameOperation(operation.getNameOperation())
                 .sumOperation(operation.getSum())
                 .createdAt(operation.getCreatedAt())

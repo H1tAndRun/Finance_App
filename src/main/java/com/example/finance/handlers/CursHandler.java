@@ -1,4 +1,4 @@
-package com.example.finance.hendlers;
+package com.example.finance.handlers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

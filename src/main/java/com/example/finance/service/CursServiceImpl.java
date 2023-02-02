@@ -2,13 +2,16 @@ package com.example.finance.service;
 
 import com.example.finance.entities.Currency;
 import com.example.finance.entities.Curs;
-import com.example.finance.hendlers.NoQuoterAGivenDay;
+import com.example.finance.handlers.NoQuoterAGivenDay;
 import com.example.finance.repository.CurrencyRepository;
 import com.example.finance.repository.CursRepository;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+
 import javax.xml.bind.JAXBContext;
 import java.math.BigDecimal;
 import java.net.URL;
@@ -19,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-@Slf4j
+@CacheConfig(cacheNames = "curs")
 public class CursServiceImpl implements CursService {
 
     private final CursRepository cursRepository;
@@ -35,10 +38,10 @@ public class CursServiceImpl implements CursService {
 
     @Override
     @SneakyThrows
+    @Cacheable(key = "#date")
     public Map<String, BigDecimal> convertRublesToCurrency(BigDecimal sum, LocalDate date) {
         if (cursRepository.getCursByDate(date).isEmpty()) {
             saveCursByDate(date);
-            return countCurrencyOfRubbles(sum, date);
         }
         return countCurrencyOfRubbles(sum, date);
     }
@@ -53,7 +56,7 @@ public class CursServiceImpl implements CursService {
             throw new NoQuoterAGivenDay("Нет котировок на заданный день");
         }
         curs.setDate(date);
-        curs.getValute().stream().forEach(e -> e.setCurs(curs));
+        curs.getValute().forEach(e -> e.setCurs(curs));
         cursRepository.save(curs);
         currencyRepository.saveAll(curs.getValute());
     }
