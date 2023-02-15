@@ -1,4 +1,4 @@
-package com.example.finance.handlers;
+package com.example.finance.exception;
 
 public class NoSuchBalanceException extends RuntimeException {
 

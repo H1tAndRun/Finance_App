@@ -3,7 +3,7 @@ package com.example.finance.mapper;
 import com.example.finance.dto.OperationAddDtoRq;
 import com.example.finance.dto.OperationAddDtoRs;
 import com.example.finance.entities.Operation;
-import com.example.finance.handlers.NoSuchBalanceException;
+import com.example.finance.exception.NoSuchBalanceException;
 import com.example.finance.repository.BalanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

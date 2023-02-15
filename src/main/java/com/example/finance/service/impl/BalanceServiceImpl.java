@@ -1,8 +1,9 @@
-package com.example.finance.service;
+package com.example.finance.service.impl;
 
 import com.example.finance.entities.Balance;
-import com.example.finance.handlers.NoSuchBalanceException;
+import com.example.finance.exception.NoSuchBalanceException;
 import com.example.finance.repository.BalanceRepository;
+import com.example.finance.service.BalanceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
